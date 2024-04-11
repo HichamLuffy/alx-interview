@@ -5,6 +5,7 @@ pascal_triangle
 
 
 def pascal_triangle(n):
+    """ Returns pascal triangle """
     Tlist = []
     for i in range(n):
         temp_list = []
