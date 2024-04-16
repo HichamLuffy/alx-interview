@@ -1,31 +1,29 @@
 #!/usr/bin/python3
-
+""" Lock boxes """
 
 
 def canUnlockAll(boxes):
-    unlocked_boxes = set([0])  # Starting with box 0 unlocked
-    keys = set(boxes[0])       # Starting with keys from box 0
+    """check README for more understanding"""
+    unlocked_rooms = [0]  # Start with room 0 unlocked
+    keys = set(boxes[0])  # Start with keys from room 0
 
-    # Continue while we have keys to try
+    # As long as we have keys to try, continue
     while keys:
-        # Track if we made progress in this iteration
-        made_progress = False
+        new_keys_added = False  # Flag to track if we find new keys
 
-        # Try to unlock boxes with the keys we have
-        for key in list(keys):  # List conversion to avoid RuntimeError
-            if key < len(boxes) and key not in unlocked_boxes:
-                # Unlock the box with the current key
-                unlocked_boxes.add(key)
-                # Add new keys from the unlocked box
-                keys.update(boxes[key])
-                # Since we used this key, remove it from our keyring
-                keys.remove(key)
-                # Mark progress
-                made_progress = True
+        # Copy the keys to a list to avoid modifying the set while iterating
+        for key in list(keys):
+            # If the key corresponds to a locked room, unlock it
+            if key not in unlocked_rooms and key < len(boxes):
+                unlocked_rooms.append(key)  # Add room to the list of unlocked rooms
+                keys.update(boxes[key])     # Add new keys from the unlocked room
+                keys.remove(key)            # Remove the used key
+                new_keys_added = True       # Set flag to True as we found new keys
 
-        # If no progress is made and keys remain, they cannot unlock new boxes
-        if not made_progress:
+        # If no new keys were added and rooms remain locked, break the loop
+        if not new_keys_added:
             break
 
-    # If all boxes are unlocked, return True
-    return len(unlocked_boxes) == len(boxes)
+    # Check if the number of unlocked rooms matches the total number of rooms
+    return len(unlocked_rooms) == len(boxes)
+
