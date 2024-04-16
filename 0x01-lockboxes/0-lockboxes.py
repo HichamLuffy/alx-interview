@@ -15,10 +15,10 @@ def canUnlockAll(boxes):
         for key in list(keys):
             # If the key corresponds to a locked room, unlock it
             if key not in unlocked_rooms and key < len(boxes):
-                unlocked_rooms.append(key)  # Add room to the list of unlocked rooms
-                keys.update(boxes[key])     # Add new keys from the unlocked room
-                keys.remove(key)            # Remove the used key
-                new_keys_added = True       # Set flag to True as we found new keys
+                unlocked_rooms.append(key)
+                keys.update(boxes[key])
+                keys.remove(key)
+                new_keys_added = True
 
         # If no new keys were added and rooms remain locked, break the loop
         if not new_keys_added:
@@ -26,4 +26,3 @@ def canUnlockAll(boxes):
 
     # Check if the number of unlocked rooms matches the total number of rooms
     return len(unlocked_rooms) == len(boxes)
-
