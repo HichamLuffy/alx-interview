@@ -72,7 +72,7 @@ try:
 
 except KeyboardInterrupt:
     # If we get a keyboard interrupt, print the stats before exiting
-    print_stats()
+    # print_stats()
     raise
 
 else:
