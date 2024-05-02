@@ -78,3 +78,5 @@ except KeyboardInterrupt:
     # If we get a keyboard interrupt, print the stats before exiting
     print_stats()
     raise
+else:
+    print_stats()
