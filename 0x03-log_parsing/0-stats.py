@@ -19,6 +19,7 @@ def print_stats():
 
 def signal_handler(signum, frame):
     """Signal handler for printing the stats before exiting."""
+    print_stats()
     raise KeyboardInterrupt
 
 
