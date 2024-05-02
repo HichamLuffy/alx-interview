@@ -23,8 +23,7 @@ def signal_handler(signum, frame):
     raise KeyboardInterrupt
 
 
-# Register the signal handler for SIGINT (CTRL + C)
-signal.signal(signal.SIGINT, signal_handler)
+# Register the signal handler for SIGINT (CTRL + C)signal.signal(signal.SIGINT, signal_handler)
 
 
 try:
