@@ -22,7 +22,7 @@ def print_stats():
 
 def signal_handler(signum, frame):
     """Signal handler for printing the stats before exiting."""
-    print_stats()
+    # print_stats()
     raise KeyboardInterrupt
 
 
@@ -72,11 +72,12 @@ try:
         except Exception as e:
             # If any other exception occurs, skip the line
             continue
+        else:
+            print_stats()
 
 
 except KeyboardInterrupt:
     # If we get a keyboard interrupt, print the stats before exiting
-    print_stats()
+    # print_stats()
     raise
-else:
-    print_stats()
+
