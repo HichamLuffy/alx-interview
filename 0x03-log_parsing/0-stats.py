@@ -22,8 +22,8 @@ def print_stats():
 
 def signal_handler(signum, frame):
     """Signal handler for printing the stats before exiting."""
-    # print_stats()
-    raise KeyboardInterrupt
+    print_stats()
+    sys.exit(0)
 
 
 # Register the signal handler for SIGINT (CTRL + C)
