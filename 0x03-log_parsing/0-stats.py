@@ -73,9 +73,5 @@ try:
 
 except KeyboardInterrupt:
     # If we get a keyboard interrupt, print the stats before exiting
-    # print_stats()
-    raise
-
-else:
-    # Print the final stats if we didn't exit due to a keyboard interrupt
     print_stats()
+    raise
