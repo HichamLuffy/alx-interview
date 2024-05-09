@@ -5,7 +5,7 @@
 def validUTF8(data):
     """ Validate UTF8 encoding """
     def bytes_needed(first_byte):
-        # Count the number of leading 1s to determine the number of bytes needed
+        """ Count the number of leading 1s in the first byte """
         if first_byte & 0b10000000 == 0:
             return 1
         count = 0
