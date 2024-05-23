@@ -1,41 +1,42 @@
-#!/usr/bin/node
+#!/usr/bin/env node
+
 const request = require('request');
 
 if (process.argv.length !== 3) {
-  console.log('Usage: ./0-starwars_characters.js <Movie ID>');
+  console.error('Usage: ./0-starwars_characters.js <Movie ID>');
   process.exit(1);
 }
 
 const movieId = process.argv[2];
-const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
+const apiUrl = `https://swapi.dev/api/films/${movieId}/`;
 
 request(apiUrl, (error, response, body) => {
   if (error) {
-    console.error('Error:', error);
+    console.error('Error fetching data:', error);
     return;
   }
 
   if (response.statusCode !== 200) {
-    console.log(`Failed to fetch movie data. Status Code: ${response.statusCode}`);
+    console.error('Failed to retrieve data. Status code:', response.statusCode);
     return;
   }
 
-  const movieData = JSON.parse(body);
-  const characterUrls = movieData.characters;
+  const filmData = JSON.parse(body);
+  const characters = filmData.characters;
 
-  characterUrls.forEach((characterUrl) => {
-    request(characterUrl, (error, response, body) => {
-      if (error) {
-        console.error('Error:', error);
+  characters.forEach((characterUrl) => {
+    request(characterUrl, (charError, charResponse, charBody) => {
+      if (charError) {
+        console.error('Error fetching character data:', charError);
         return;
       }
 
-      if (response.statusCode !== 200) {
-        console.log(`Failed to fetch character data. Status Code: ${response.statusCode}`);
+      if (charResponse.statusCode !== 200) {
+        console.error('Failed to retrieve character data. Status code:', charResponse.statusCode);
         return;
       }
 
-      const characterData = JSON.parse(body);
+      const characterData = JSON.parse(charBody);
       console.log(characterData.name);
     });
   });
