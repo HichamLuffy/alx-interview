@@ -5,11 +5,15 @@
 def rotate_2d_matrix(matrix):
     """Rotate 2D matrix"""
     n = len(matrix)
-    for i in range(len(matrix)):
-        for j in range(i, len(matrix)):
-            matrix[j][i], matrix[i][j] = matrix[i][j], matrix[j][i]
-        for i in range(n):
-            matrix[i] = matrix[i][::-1]
+    if matrix:
+        try:
+            for i in range(len(matrix)):
+                for j in range(i, len(matrix)):
+                    matrix[j][i], matrix[i][j] = matrix[i][j], matrix[j][i]
+                for i in range(n):
+                    matrix[i] = matrix[i][::-1]
+        except:
+            pass
 
 # my Debugging steps hhhhhhhhhh
 # def rotate_2d_matrix(mat):
