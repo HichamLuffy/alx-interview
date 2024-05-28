@@ -12,8 +12,8 @@ def rotate_2d_matrix(matrix):
                     matrix[j][i], matrix[i][j] = matrix[i][j], matrix[j][i]
             for i in range(n):
                 matrix[i] = matrix[i][::-1]
-        except:
-            pass
+        except ValueError:
+            print("Error - matrix is None")
 
 # my Debugging steps hhhhhhhhhh
 # def rotate_2d_matrix(mat):
