@@ -10,8 +10,8 @@ def rotate_2d_matrix(matrix):
             for i in range(len(matrix)):
                 for j in range(i, len(matrix)):
                     matrix[j][i], matrix[i][j] = matrix[i][j], matrix[j][i]
-                for i in range(n):
-                    matrix[i] = matrix[i][::-1]
+            for i in range(n):
+                matrix[i] = matrix[i][::-1]
         except:
             pass
 
