@@ -1,9 +1,15 @@
 #!/usr/bin/python3
-""" making change """
+"""
+Module for making change
+"""
 
 
 def makeChange(coins, total):
-    """Determine the fewest number of coins needed"""
+    """
+    How many of this type of coin can I get with my money? Okay,
+        I'll take that many. Now, how much money do I have left?
+        And how many coins do I have in my pocket?
+    """
     if total <= 0:
         return 0
 
