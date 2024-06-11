@@ -21,7 +21,8 @@ def island_perimeter(grid):
                 for dr, dc in directions:
                     nr, nc = r + dr, c + dc
                     # Check if the neighbor is out of bounds or water
-                    if nr < 0 or nr >= rows or nc < 0 or nc >= cols or grid[nr][nc] == 0:
+                    if nr < 0 or nr >= rows or nc < 0\
+                            or nc >= cols or grid[nr][nc] == 0:
                         perimeter += 1
 
     return perimeter
