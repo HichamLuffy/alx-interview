@@ -19,6 +19,7 @@ def compute_primes(n):
             result.append(p)
     return result
 
+
 def isWinner(x, nums):
     """Determine the winner of the
     game for x rounds given the list nums."""
