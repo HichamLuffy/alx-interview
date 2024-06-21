@@ -1,20 +1,27 @@
 #!/usr/bin/python3
-"""
-This module defines the function isWinner.
-"""
+"""This module defines the function isWinner."""
+
 
 def compute_primes(n):
-    """Return a list of primes up to n using the Sieve of Eratosthenes."""
-    is_prime = [True] * (n + 1)
-    is_prime[0] = is_prime[1] = False
-    for p in range(2, int(n**0.5) + 1):
-        if is_prime[p]:
-            for multiple in range(p * p, n + 1, p):
-                is_prime[multiple] = False
-    return [num for num, prime in enumerate(is_prime) if prime]
+    """Return a list of primes up to n using the Sieve of Eratosthenes
+    this function return an array of prime numbers
+    smaller or equal to n using Sieve of Eratosthenes"""
+    result = []
+    prime = [True for i in range(n+1)]
+    p = 2
+    while (p * p <= n):
+        if (prime[p] is True):
+            for i in range(p * p, n+1, p):
+                prime[i] = False
+        p += 1
+    for p in range(2, n+1):
+        if prime[p]:
+            result.append(p)
+    return result
 
 def isWinner(x, nums):
-    """Determine the winner of the game for x rounds given the list nums."""
+    """Determine the winner of the
+    game for x rounds given the list nums."""
     if x != len(nums):
         return None
 
@@ -34,7 +41,3 @@ def isWinner(x, nums):
         return "Ben"
     else:
         return None
-
-# Example usage
-if __name__ == "__main__":
-    print("Winner: {}".format(isWinner(5, [2, 5, 1, 4, 3])))
